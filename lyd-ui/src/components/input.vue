@@ -1,5 +1,5 @@
 <template>
-  <div class="lyd-input lyd-input--suffix">
+  <div class="lyd-input" :class="{ 'lyd-input--suffix': showIcon }">
     <input
       class="lyd-input_inner"
       :class="{'is-disabled': disabled}"
@@ -47,6 +47,11 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    showIcon () {
+      return this.clearable || this.showPassword
     }
   },
   methods: {

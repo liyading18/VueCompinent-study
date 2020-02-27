@@ -9,8 +9,8 @@
       :value="value"
       @input="handleInput"
     >
-    <span class="lyd-input_suffix">
-      <i class="icon-meinv" v-if="clearable"></i>
+    <span class="lyd-input_suffix" v-if="showIcon">
+      <i class="icon-meinv" v-if="clearable && value" @click="clear"></i>
       <i class="icon-meinvguanjia" v-if="showPassword"></i>
     </span>
   </div>
@@ -57,6 +57,9 @@ export default {
   methods: {
     handleInput (e) {
       this.$emit('input', e.target.value)
+    },
+    clear () {
+      this.$emit('input', '')
     }
   }
 }

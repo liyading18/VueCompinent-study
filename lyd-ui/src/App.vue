@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    自己封装组件
+    <!-- 自己封装组件 -->
     <!-- <lyd-input
       placeholder="请输入姓名"
       type="password"

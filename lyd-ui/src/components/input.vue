@@ -10,8 +10,8 @@
       @input="handleInput"
     >
     <span class="lyd-input_suffix">
-      <i class="iconfont icon-meinv:before"></i>
-      <i class="iconfont icon-meinvguanjia:before"></i>
+      <i class="icon-meinv" v-if="clearable"></i>
+      <i class="icon-meinvguanjia" v-if="showPassword"></i>
     </span>
   </div>
 </template>

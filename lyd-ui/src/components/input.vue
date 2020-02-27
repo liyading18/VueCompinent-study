@@ -1,5 +1,5 @@
 <template>
-  <div class="lyd-input">
+  <div class="lyd-input lyd-input--suffix">
     <input
       class="lyd-input_inner"
       :class="{'is-disabled': disabled}"
@@ -88,6 +88,28 @@ export default {
        border-color: #e4e7ed;
        color: #c0c4cc;
        cursor: not-allowed;
+      }
+    }
+  }
+  .lyd-input--suffix {
+    .lyd-input_inner {
+      padding-right: 30px;
+    }
+    .lyd-input_suffix {
+      position: absolute;
+      height: 100%;
+      right: 10px;
+      top: 0;
+      line-height: 40px;
+      text-align: center;
+      color: #3c0ccc;
+      transition: all .3s;
+      z-index: 900;
+      i {
+        color: #c0c4cc;
+        font-size: 14px;
+        cursor: pointer;
+        transition: color .2s cubic-bezier(.645,.045,.355,1);
       }
     }
   }

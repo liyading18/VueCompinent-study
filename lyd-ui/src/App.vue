@@ -8,8 +8,9 @@
       disabled
     ></lyd-input>
     <lyd-input v-model="value"></lyd-input> -->
-    <lyd-input v-model="value" clearable></lyd-input>
-    <lyd-input v-model="value" type="password" show-password></lyd-input>
+    <!-- <lyd-input v-model="value" clearable></lyd-input>
+    <lyd-input v-model="value" type="password" show-password></lyd-input> -->
+    <lyd-switch></lyd-switch>
   </div>
 </template>
 

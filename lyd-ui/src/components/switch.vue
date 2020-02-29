@@ -1,5 +1,5 @@
 <template>
-  <label class="lyd-switch" @click="handleClick">
+  <label class="lyd-switch" :class="{'is-checked': value}" @click="handleClick">
     <span class="lyd-switch_core">
       <span class="lyd-switch_button"></span>
     </span>
@@ -55,6 +55,15 @@ export default {
         width: 16px;
         height: 16px;
         background-color: #fff;
+      }
+    }
+  }
+  .lyd-switch.is-checked {
+    .lyd-switch_core {
+      border-color: #409eff;
+      background-color: #409eff;
+      .lyd-switch_button {
+        transform: translateX(20px);
       }
     }
   }

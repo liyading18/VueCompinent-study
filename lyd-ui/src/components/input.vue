@@ -17,7 +17,12 @@
     >
     <span class="lyd-input_suffix" v-if="showIcon">
       <i class="icon-meinv" v-if="clearable && value" @click="clear"></i>
-      <i class="icon-meinvguanjia" v-if="showPassword" @click="handleShowPassword"></i>
+      <i
+        class="icon-meinvguanjia"
+        v-if="showPassword"
+        @click="handleShowPassword"
+        :class="{'lyd-input_active': showPasswordVisible}"
+      ></i>
     </span>
   </div>
 </template>
@@ -132,6 +137,9 @@ export default {
         font-size: 14px;
         cursor: pointer;
         transition: color .2s cubic-bezier(.645,.045,.355,1);
+      }
+      .lyd-input_active {
+        color: blue;
       }
     }
   }

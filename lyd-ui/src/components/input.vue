@@ -1,17 +1,23 @@
 <template>
   <div class="lyd-input" :class="{ 'lyd-input--suffix': showIcon }">
+    <!-- 根据父组件是否传过来showPassword属性来改变type属性
+     父组件如果没有传showPassword属性值，则默认使用
+父组件传过来的type属性值；
+     父组件如果传过来了showPassword属性值，代表需要
+修改type属性；此时利用子组件自己的showPasswordVisivle
+值来修改type的属性值 -->
     <input
       class="lyd-input_inner"
       :class="{'is-disabled': disabled}"
       :placeholder="placeholder"
-      :type="type"
+      :type="showPassword ? (showPasswordVisible ? 'text' : 'password') : type"
       :disabled="disabled"
       :value="value"
       @input="handleInput"
     >
     <span class="lyd-input_suffix" v-if="showIcon">
       <i class="icon-meinv" v-if="clearable && value" @click="clear"></i>
-      <i class="icon-meinvguanjia" v-if="showPassword"></i>
+      <i class="icon-meinvguanjia" v-if="showPassword" @click="handleShowPassword"></i>
     </span>
   </div>
 </template>
@@ -54,7 +60,15 @@ export default {
       return this.clearable || this.showPassword
     }
   },
+  data () {
+    return {
+      showPasswordVisible: false
+    }
+  },
   methods: {
+    handleShowPassword () {
+      this.showPasswordVisible = !this.showPasswordVisible
+    },
     handleInput (e) {
       this.$emit('input', e.target.value)
     },

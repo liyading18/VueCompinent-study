@@ -10,7 +10,7 @@
     <lyd-input v-model="value"></lyd-input> -->
     <!-- <lyd-input v-model="value" clearable></lyd-input>
     <lyd-input v-model="value" type="password" show-password></lyd-input> -->
-    <lyd-switch></lyd-switch>
+    <lyd-switch v-model="active"></lyd-switch>
   </div>
 </template>
 
@@ -18,7 +18,8 @@
 export default {
   data () {
     return {
-      value: '李亚鼎'
+      value: '李亚鼎',
+      active: false
     }
   }
 }

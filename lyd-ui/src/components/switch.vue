@@ -1,5 +1,5 @@
 <template>
-  <label class="lyd-switch">
+  <label class="lyd-switch" @click="handleClick">
     <span class="lyd-switch_core">
       <span class="lyd-switch_button"></span>
     </span>
@@ -8,7 +8,18 @@
 
 <script>
 export default {
-  name: 'LydSwitch'
+  name: 'LydSwitch',
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$emit('input', !this.value)
+    }
+  }
 }
 </script>
 

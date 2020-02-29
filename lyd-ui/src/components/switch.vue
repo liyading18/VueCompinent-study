@@ -1,15 +1,20 @@
 <template>
-  <label class="lyd-switch" :class="{'is-checked': value}" @click="handleClick">
+  <div class="lyd-switch" :class="{'is-checked': value}" @click="handleClick">
+    <input type="checkbox" class="lyd-switch_input" :name="name" ref="input" />
     <span class="lyd-switch_core" ref="core">
       <span class="lyd-switch_button"></span>
     </span>
-  </label>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'LydSwitch',
   props: {
+    name: {
+      type: String,
+      default: ''
+    },
     activeColor: {
       type: String,
       default: ''
@@ -25,6 +30,7 @@ export default {
   },
   mounted () {
     this.setColor()
+    this.$refs.input.checked = this.value
   },
   methods: {
     setColor () {
@@ -49,6 +55,7 @@ export default {
       //   方式3  async await
       await this.$nextTick()
       this.setColor()
+      this.$refs.input.checked = this.value
     }
   }
 }
@@ -63,6 +70,13 @@ export default {
     line-height: 20px;
     height: 20px;
     vertical-align: middle;
+    .lyd-switch_input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin: 0;
+      opacity: 0;
+    }
     .lyd-switch_core {
       margin: 0;
       display: inline-block;

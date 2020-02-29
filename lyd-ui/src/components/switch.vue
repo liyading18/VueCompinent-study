@@ -1,6 +1,6 @@
 <template>
   <label class="lyd-switch" :class="{'is-checked': value}" @click="handleClick">
-    <span class="lyd-switch_core">
+    <span class="lyd-switch_core" ref="core">
       <span class="lyd-switch_button"></span>
     </span>
   </label>
@@ -10,14 +10,45 @@
 export default {
   name: 'LydSwitch',
   props: {
+    activeColor: {
+      type: String,
+      default: ''
+    },
+    inactiveColor: {
+      type: String,
+      default: ''
+    },
     value: {
       type: Boolean,
       default: false
     }
   },
+  mounted () {
+    this.setColor()
+  },
   methods: {
-    handleClick () {
+    setColor () {
+      // 修改开关的颜色
+      if (this.activeColor || this.inactiveColor) {
+        const color = this.value ? this.activeColor : this.inactiveColor
+        this.$refs.core.style.borderColor = color
+        this.$refs.core.style.backgroundColor = color
+      }
+    },
+    async handleClick () {
       this.$emit('input', !this.value)
+      // 等待value值发生改变，再setColor
+      // 方式1：
+      //   this.$nextTick(function () {
+      //     this.setColor()
+      //   })
+      // 方式2 Promse
+      //   this.$nextTick().then(() => {
+      //     this.setColor()
+      //   })
+      //   方式3  async await
+      await this.$nextTick()
+      this.setColor()
     }
   }
 }

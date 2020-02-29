@@ -11,6 +11,7 @@
     <!-- <lyd-input v-model="value" clearable></lyd-input>
     <lyd-input v-model="value" type="password" show-password></lyd-input> -->
     <lyd-switch v-model="active"></lyd-switch>
+    <lyd-switch v-model="active" active-color="green" inactive-color="red"></lyd-switch>
   </div>
 </template>
 
